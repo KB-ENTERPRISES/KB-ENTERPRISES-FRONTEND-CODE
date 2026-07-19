@@ -7,7 +7,8 @@
     // GitHub Pages SPA redirect — preserves the clean URL path
     // When a user directly visits /frontend-/place-order, GitHub serves this 404.html
     // This script redirects to index.html while preserving the original path
-    var pathSegmentsToKeep = 1; // Keep /frontend-/ as the base
+    var isGithubIo = window.location.hostname.endsWith('github.io');
+    var pathSegmentsToKeep = isGithubIo ? 1 : 0; // Keep /frontend-/ as the base
     var l = window.location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +

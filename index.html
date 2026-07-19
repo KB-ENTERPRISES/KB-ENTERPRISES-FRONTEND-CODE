@@ -2476,9 +2476,12 @@ let API = getApiUrl();
 
 // Base path for clean URL routing — auto-detects GitHub Pages repo path
 const BASE_PATH = (() => {
-  const path = window.location.pathname;
-  const match = path.match(/^(\/[^/]+\/)/);
-  return match ? match[1] : '/';
+  if (window.location.hostname.endsWith('github.io')) {
+    const path = window.location.pathname;
+    const match = path.match(/^(\/[^/]+\/)/);
+    return match ? match[1] : '/';
+  }
+  return '/';
 })();
 
 /* ════════════════════════════════════════════════════════
